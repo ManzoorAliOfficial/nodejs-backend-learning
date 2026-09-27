@@ -7,11 +7,9 @@ const server = http.createServer((req, resp) => {
         return;
     }
 
-    const log = `${Date.now()}: ${req.url} New Request Received...!!\n`;
+    const log = `${Date.now()}: ${req.method} ${req.url} New Request Received...!!\n`;
 
-    const myUrl = new URL(req.url, `http://${req.headers.host}`);
-
-    console.log(myUrl);
+    const myUrl = new URL(req.url,   `http://${req.headers.host}`);
 
     fs.appendFile("log.txt", log, (err) => {
         if (err) {
